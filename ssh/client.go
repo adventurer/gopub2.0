@@ -3,9 +3,9 @@ package ssh
 import (
 	"bytes"
 	"fmt"
-	"gopub/models"
-	"gopub/tools"
-	"gopub/websocket"
+	"gopub2.0/models"
+	"gopub2.0/tools"
+	"gopub2.0/websocket"
 	"io/ioutil"
 	"os"
 	"os/user"

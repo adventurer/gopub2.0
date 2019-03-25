@@ -2,9 +2,10 @@ package controllers
 
 import (
 	"fmt"
-	"gopub/cache"
-	"gopub/models"
 	"log"
+
+	"gopub2.0/cache"
+	"gopub2.0/models"
 
 	"github.com/kataras/iris"
 )

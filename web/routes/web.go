@@ -1,7 +1,7 @@
 package routes
 
 import (
-	"gopub/web/controllers"
+	"gopub2.0/web/controllers"
 
 	"github.com/kataras/iris"
 )

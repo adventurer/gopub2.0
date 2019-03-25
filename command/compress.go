@@ -3,8 +3,8 @@ package command
 import (
 	"archive/tar"
 	"compress/gzip"
-	"gopub/models"
-	"gopub/tools"
+	"gopub2.0/models"
+	"gopub2.0/tools"
 	"io"
 	"os"
 	"path"

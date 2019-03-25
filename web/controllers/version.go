@@ -3,8 +3,8 @@ package controllers
 import (
 	"encoding/json"
 	"fmt"
-	"gopub/command"
-	"gopub/models"
+	"gopub2.0/command"
+	"gopub2.0/models"
 	"log"
 	"path"
 

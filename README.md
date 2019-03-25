@@ -1,4 +1,4 @@
-gopub
+gopub2.0
 ==============
 项目说明：</br>
 gopub是一款由golang语言编写的代码发布系统,适用于golang,php,java,python等脚本代码的发布。</br>
@@ -34,15 +34,15 @@ ssh-keygen -t rsa
 编译：
 1. windows:
 ```Bash
-CGO_ENABLED=0 GOOS=windows GOARCH=amd64 go build -o gopub main.go
+CGO_ENABLED=0 GOOS=windows GOARCH=amd64 go build -o gopub2.0 main.go
 ```
 2. linux:
 ```Bash
-CGO_ENABLED=0 GOOS=linux GOARCH=amd64 go build -o gopub main.go
+CGO_ENABLED=0 GOOS=linux GOARCH=amd64 go build -o gopub2.0 main.go
 ```
 3. macos:
 ```Bash
-CGO_ENABLED=0 GOOS=darwin GOARCH=amd64 go build -o gopub main.go
+CGO_ENABLED=0 GOOS=darwin GOARCH=amd64 go build -o gopub2.0 main.go
 ```
 
 配置文件：config.json
@@ -65,7 +65,7 @@ update user set role = 2;
 ```
 
 下载编译版本：
-[下载](https://github.com/adventurer/gopub/releases/tag/latest)
+[下载](https://github.com/adventurer/gopub2.0/releases/tag/latest)
 
 	ps：欢迎fork和点赞～～
 # gopub2.0

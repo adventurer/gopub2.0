@@ -2,10 +2,10 @@ package command
 
 import (
 	"fmt"
-	"gopub/models"
-	"gopub/ssh"
-	"gopub/tools"
-	"gopub/websocket"
+	"gopub2.0/models"
+	"gopub2.0/ssh"
+	"gopub2.0/tools"
+	"gopub2.0/websocket"
 	"os"
 	"os/exec"
 	"sync"

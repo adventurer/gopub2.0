@@ -1,7 +1,7 @@
 package cache
 
 import (
-	"gopub/models"
+	"gopub2.0/models"
 	"log"
 )
 

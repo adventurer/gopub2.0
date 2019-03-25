@@ -5,9 +5,9 @@ import (
 	"encoding/base64"
 	"encoding/json"
 	"fmt"
-	"gopub/cache"
-	"gopub/models"
-	"gopub/web/session"
+	"gopub2.0/cache"
+	"gopub2.0/models"
+	"gopub2.0/web/session"
 	"log"
 	"time"
 

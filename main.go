@@ -1,9 +1,9 @@
 package main
 
 import (
-	"gopub/models"
-	"gopub/web/middleware"
-	"gopub/web/routes"
+	"gopub2.0/models"
+	"gopub2.0/web/middleware"
+	"gopub2.0/web/routes"
 
 	"github.com/kataras/iris"
 	"github.com/kataras/iris/middleware/logger"

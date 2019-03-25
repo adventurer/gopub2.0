@@ -3,9 +3,9 @@ package controllers
 import (
 	"encoding/json"
 	"fmt"
-	"gopub/cache"
-	"gopub/command"
-	"gopub/models"
+	"gopub2.0/cache"
+	"gopub2.0/command"
+	"gopub2.0/models"
 	"log"
 	"path"
 	"strconv"

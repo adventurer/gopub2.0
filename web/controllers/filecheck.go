@@ -2,8 +2,8 @@ package controllers
 
 import (
 	"fmt"
-	"gopub/command"
-	"gopub/models"
+	"gopub2.0/command"
+	"gopub2.0/models"
 	"path"
 	"strconv"
 	"strings"

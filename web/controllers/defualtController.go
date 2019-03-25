@@ -3,9 +3,10 @@ package controllers
 import (
 	"encoding/json"
 	"fmt"
-	"gopub/web/session"
-	"gopub/websocket"
 	"log"
+
+	"gopub2.0/web/session"
+	"gopub2.0/websocket"
 
 	"github.com/kataras/iris"
 	"github.com/kataras/iris/sessions"
