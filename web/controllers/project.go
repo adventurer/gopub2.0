@@ -3,14 +3,15 @@ package controllers
 import (
 	"encoding/json"
 	"fmt"
-	"gopub2.0/cache"
-	"gopub2.0/command"
-	"gopub2.0/models"
 	"log"
 	"path"
 	"strconv"
 	"strings"
 	"time"
+
+	"gopub2.0/cache"
+	"gopub2.0/command"
+	"gopub2.0/models"
 
 	"github.com/kataras/iris"
 )
@@ -41,7 +42,11 @@ func (c *DefauleController) ProjectDel(ctx iris.Context) {
 
 	p.Del()
 	cache.CacheProject()
-	ctx.Redirect("/project/index", 302)
+	result := models.NewDefaultReturn()
+	result.Sta = 1
+	result.Msg = "成功"
+	blob, _ := json.Marshal(result)
+	ctx.Write(blob)
 }
 
 func (c *DefauleController) ProjectCopy(ctx iris.Context) {
@@ -65,7 +70,11 @@ func (c *DefauleController) ProjectCopy(ctx iris.Context) {
 		return
 	}
 	cache.CacheProject()
-	ctx.Redirect("/project/index", 302)
+	result := models.NewDefaultReturn()
+	result.Sta = 1
+	result.Msg = "成功"
+	blob, _ := json.Marshal(result)
+	ctx.Write(blob)
 }
 
 func (c *DefauleController) ProjectInitialize(ctx iris.Context) {
@@ -186,11 +195,16 @@ func (c *DefauleController) ProjectCommit(ctx iris.Context) {
 		return
 	}
 	cache.CacheProject()
-	ctx.Redirect("/project/index", 302)
+
+	result := models.NewDefaultReturn()
+	result.Sta = 1
+	result.Msg = "成功"
+	blob, _ := json.Marshal(result)
+	ctx.Write(blob)
 }
 
 // 编辑页面
-func (c *DefauleController) ProjectEdit(ctx iris.Context) {
+func (c *DefauleController) ProjectInfo(ctx iris.Context) {
 	id := ctx.URLParam("id")
 	p := models.Project{}
 	project, err := p.Find(id)
@@ -198,8 +212,12 @@ func (c *DefauleController) ProjectEdit(ctx iris.Context) {
 		ctx.WriteString(fmt.Sprintf("%s", err))
 		return
 	}
-	ctx.ViewData("project", project)
-	ctx.View("project/edit.html")
+	result := models.NewDefaultReturn()
+	result.Sta = 1
+	result.Msg = "成功"
+	result.Data = project
+	blob, _ := json.Marshal(result)
+	ctx.Write(blob)
 }
 
 // 编辑提交
@@ -217,14 +235,19 @@ func (c *DefauleController) ProjectEditCommit(ctx iris.Context) {
 		return
 	}
 	cache.CacheProject()
-	ctx.Redirect("/project/edit?id="+strconv.Itoa(p.Id), 302)
+	result := models.NewDefaultReturn()
+	result.Sta = 1
+	result.Msg = "成功"
+	blob, _ := json.Marshal(result)
+	ctx.Write(blob)
 }
 
+// 测试ssh连接
 func (c *DefauleController) ProjectSshCheck(ctx iris.Context) {
 	var message string
 
-	user := ctx.URLParam("user")
-	hosts_param := ctx.URLParam("hosts")
+	user := ctx.URLParam("ReleaseUser")
+	hosts_param := ctx.URLParam("Hosts")
 	hosts := strings.Split(hosts_param, ",")
 	for _, v := range hosts {
 		host_split := strings.Split(v, ":")

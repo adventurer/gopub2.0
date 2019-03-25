@@ -92,11 +92,11 @@ func (r *Routes) InitRoute(app *iris.Application) {
 
 		adminRoutes.Any("/project/init", controller.AdminCheck, controller.ProjectInitialize)
 
-		adminRoutes.Any("/project/new", controller.AdminCheck, controller.ProjectNew)
+		// adminRoutes.Any("/project/new", controller.AdminCheck, controller.ProjectNew)
 
 		adminRoutes.Any("/project/commit", controller.AdminCheck, controller.ProjectCommit)
 
-		adminRoutes.Any("/project/edit", controller.AdminCheck, controller.ProjectEdit)
+		adminRoutes.Any("/project/info", controller.AdminCheck, controller.ProjectInfo)
 
 		adminRoutes.Any("/project/editcommit", controller.AdminCheck, controller.ProjectEditCommit)
 
