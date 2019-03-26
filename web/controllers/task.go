@@ -337,7 +337,7 @@ func (c *DefauleController) TaskDeploy(ctx iris.Context) {
 	}
 	t := new(models.Task)
 	task := t.Find(id)
-	if task.Audit != 0 {
+	if task.Audit == 0 {
 		websocket.Broadcast(fmt.Sprintf("progress:%d:%s:%s", task.Id, "0%", "请等待审核"))
 		return
 	}
