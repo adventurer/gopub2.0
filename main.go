@@ -50,11 +50,7 @@ func main() {
 	route.InitRoute(App)
 
 	App.StaticWeb("/", "./html/vue")
-	// staticData, err := Asset("./html/vue")
-	// if err != nil {
-	// 	panic(err)
-	// }
-	// App.StaticEmbedded("/", "./html/vue", Asset, AssetNames)
+	// App.StaticEmbedded("/", "./html/vue/", Asset, AssetNames)
 
 	// websocket.SetupWebsocket(App)
 
