@@ -3,18 +3,19 @@ package controllers
 import (
 	"encoding/json"
 	"fmt"
-	"gopub2.0/cache"
-	"gopub2.0/command"
-	"gopub2.0/models"
-	"gopub2.0/tools"
-	"gopub2.0/web/session"
-	"gopub2.0/websocket"
 	"log"
 	"os"
 	"path"
 	"strconv"
 	"strings"
 	"time"
+
+	"gopub2.0/cache"
+	"gopub2.0/command"
+	"gopub2.0/models"
+	"gopub2.0/tools"
+	"gopub2.0/web/session"
+	"gopub2.0/websocket"
 
 	"github.com/kataras/iris"
 )
@@ -27,6 +28,7 @@ type taskList struct {
 	Version  string
 	Status   int
 	Username string
+	Audit    int
 }
 
 func (c *DefauleController) TaskIndex(ctx iris.Context) {
@@ -62,6 +64,7 @@ func (c *DefauleController) TaskIndex(ctx iris.Context) {
 		tasklist.Files = task.FileList
 		tasklist.Version = task.LinkId
 		tasklist.Status = task.Status
+		tasklist.Audit = task.Audit
 
 		tasklists = append(tasklists, tasklist)
 	}
@@ -108,7 +111,11 @@ func (c *DefauleController) TaskAudit(ctx iris.Context) {
 		ctx.View("error/401.html")
 		return
 	}
-	ctx.Redirect("/task/index")
+	result := models.NewDefaultReturn()
+	result.Sta = 1
+	result.Msg = "成功"
+	data, _ := json.Marshal(result)
+	ctx.Write(data)
 
 }
 
