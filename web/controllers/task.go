@@ -485,7 +485,7 @@ func fullDeploy(project *models.Project, task *models.Task) (err error) {
 
 // 列表部署
 func listDeploy(project *models.Project, task *models.Task) (err error) {
-	files := strings.Split(strings.TrimSpace(task.FileList), "\r\n")
+	files := strings.Split(strings.TrimSpace(task.FileList), "\n")
 	for k, v := range files {
 		files[k] = project.DeployFrom + "/" + v
 	}
