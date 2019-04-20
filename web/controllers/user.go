@@ -5,15 +5,50 @@ import (
 	"encoding/base64"
 	"encoding/json"
 	"fmt"
+	"log"
+	"time"
+
 	"gopub2.0/cache"
 	"gopub2.0/models"
 	"gopub2.0/web/session"
-	"log"
-	"time"
 
 	"github.com/kataras/iris"
 	uuid "github.com/satori/go.uuid"
 )
+
+// 验证登陆
+func (c *DefauleController) UserCheck(ctx iris.Context) {
+	s := session.Sess.Start(ctx)
+	result := models.NewDefaultReturn()
+	userid, err := s.GetInt("user_id")
+	if err != nil || userid <= 0 {
+		result.Msg = "登陆失败：没找到userid"
+		result.Sta = 0
+		data, _ := json.Marshal(result)
+		ctx.Write(data)
+		return
+	}
+	userrole, err := s.GetInt("user_role")
+	if err != nil {
+		result.Msg = "登陆失败：没找到userid"
+		result.Sta = 0
+		data, _ := json.Marshal(result)
+		ctx.Write(data)
+		return
+	}
+	if userrole <= 0 {
+		result.Msg = "登陆失败：请联系系统管理员开通账户"
+		result.Sta = 0
+		data, _ := json.Marshal(result)
+		ctx.Write(data)
+		return
+	}
+	result.Msg = "登陆成功"
+	result.Sta = 1
+	data, _ := json.Marshal(result)
+	ctx.Write(data)
+	return
+}
 
 // 登入
 func (c *DefauleController) UserLoginSubmit(ctx iris.Context) {
@@ -103,7 +138,11 @@ func (c *DefauleController) UserActive(ctx iris.Context) {
 	}
 	u := models.User{}
 	u.SetRoleById(id, role)
-	ctx.Redirect("/user/index")
+	result := models.BasicReturn{}
+	result.Sta = 1
+	result.Msg = "删除成功"
+	data, _ := json.Marshal(result)
+	ctx.Write(data)
 }
 
 // 用户列表
@@ -114,8 +153,8 @@ func (c *DefauleController) UserList(ctx iris.Context) {
 		log.Println(err)
 		return
 	}
-	ctx.ViewData("list", users)
-	ctx.View("user/index.html")
+	data, _ := json.Marshal(users)
+	ctx.Write(data)
 }
 
 // 删除
@@ -127,5 +166,9 @@ func (c *DefauleController) UserDel(ctx iris.Context) {
 	}
 	u := models.User{}
 	u.DelUserById(id)
-	ctx.Redirect("/user/index")
+	result := models.BasicReturn{}
+	result.Sta = 1
+	result.Msg = "删除成功"
+	data, _ := json.Marshal(result)
+	ctx.Write(data)
 }

@@ -13,6 +13,7 @@ import (
 var Xorm *xorm.Engine
 
 func init() {
+	log.Println("models init...")
 	config()
 	var err error
 	dns := fmt.Sprintf("%s:%s@tcp(%s:%s)/%s?charset=utf8", AppConfig.DBUser, AppConfig.DBPass, AppConfig.DBIp, AppConfig.DBPort, AppConfig.DBName)

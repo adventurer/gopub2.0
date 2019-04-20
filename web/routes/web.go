@@ -42,6 +42,8 @@ func (r *Routes) InitRoute(app *iris.Application) {
 
 	app.Any("/echo", controller.Echo)
 
+	app.Any("/user/usercheck", controller.UserCheck)
+
 	adminRoutes := app.Party("/", controller.SessionInit, controller.LoginCheck)
 	{
 		adminRoutes.Any("/welcome", controller.Welcome)
@@ -77,7 +79,7 @@ func (r *Routes) InitRoute(app *iris.Application) {
 		adminRoutes.Any("/version/switch", controller.AdminCheck, controller.VersionSwitch)
 
 		// 人员管理
-		adminRoutes.Any("/user/index", controller.AdminCheck, controller.UserList)
+		adminRoutes.Any("/user/list", controller.AdminCheck, controller.UserList)
 
 		adminRoutes.Any("/user/del", controller.AdminCheck, controller.UserDel)
 

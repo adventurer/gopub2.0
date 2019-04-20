@@ -49,8 +49,8 @@ func main() {
 	route := new(routes.Routes)
 	route.InitRoute(App)
 
-	App.StaticWeb("/", "./html/vue")
-	// App.StaticEmbedded("/", "./html/vue/", Asset, AssetNames)
+	// App.StaticWeb("/", "./html/vue")
+	App.StaticEmbedded("/", "./html/vue/", Asset, AssetNames)
 
 	// websocket.SetupWebsocket(App)
 

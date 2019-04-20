@@ -17,11 +17,11 @@ type DefauleController struct {
 }
 
 func (c *DefauleController) Echo(ctx iris.Context) {
-	log.Println("run echo")
 	ws, err := websocket.Upgrader.Upgrade(ctx.ResponseWriter().Naive(), ctx.Request(), nil)
 	if err != nil {
 		log.Fatal(err)
 	}
+
 	websocket.Clients[ws] = true
 }
 
