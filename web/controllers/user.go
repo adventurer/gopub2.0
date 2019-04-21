@@ -70,7 +70,7 @@ func (c *DefauleController) UserLoginSubmit(ctx iris.Context) {
 	oldpass := fmt.Sprintf("%x", md5.Sum([]byte(user.PasswordHash)))
 	newpass := userNew.PasswordHash
 
-	access := base64.URLEncoding.EncodeToString(uuid.NewV3(uuid.Must(uuid.NewV4()), oldpass).Bytes())
+	access := base64.URLEncoding.EncodeToString(uuid.NewV3(uuid.Must(uuid.NewV4(), err), oldpass).Bytes())
 
 	if oldpass == newpass {
 		userNew.AuthKey = access
